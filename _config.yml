@@ -8,3 +8,4 @@ urls:
       url: https://github.com/exaem
     - text: email
       url: mailto:exaem@exaem.co.uk
+baseurl: '/simplygrey-jekyll'
