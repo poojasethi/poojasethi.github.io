@@ -16,7 +16,7 @@ Once you have done this, installation is pretty easy.
 
 Simply clone the repository
 
-`git clone https://github.com/mondss/simplygrey-jekyll.git`
+`git clone https://github.com/liamsymonds/simplygrey-jekyll.git`
 
 and serve the blog up so people can see it
 
