@@ -8,10 +8,8 @@ body {
 }
 
 @media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
 }
+
 /**
  * //////////////////////////
  * Font and link declarations
@@ -40,7 +38,6 @@ h3 {
     font-weight: normal;
     margin-bottom: 5px;
     color: #666666;
-    text-decoration: underline;
 }
 
 a, a:link, a:active {
@@ -49,7 +46,7 @@ a, a:link, a:active {
 }
 
 a:hover {
-    color: #B3B3B3;
+    color: #48C9B0;
     text-decoration: underline;
 }
 
@@ -85,7 +82,7 @@ div.content pre {
     color: #FFF;
     overflow-x: auto;
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 div.content .highlight {
@@ -99,7 +96,7 @@ footer {
     margin-top: 10px;
     padding-top: 10px;
     color: #C2C2C2;
-    font-size: 11px;
+    font-size: 14px;
     bottom: 0;
     padding-bottom: 10px;
 }
@@ -136,7 +133,7 @@ div.right .post ul {
  */
 div.col-sm-3 {
         margin-top: 100px;
-        font-size: 11px;
+        font-size: 14px;
         color: #666;
 }
 
@@ -156,4 +153,17 @@ div.col-sm-3 img#about {
     margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/**
+ * Pooja's custom styling.
+ */
+#connect img {
+    height: 30px;
+    width: 30px;
+}
+
+.resume-logo {
+    height: 50px;
+    width: 50px;
 }

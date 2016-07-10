@@ -1,9 +1,34 @@
-name: Simply Grey
-markdown: redcarpet
+# name: Simply Grey
+# markdown: redcarpet
+# highlighter: pygments
+# github: https://www.github.com/liamsymonds
+# about: I am an independent developer from the sunny UK. I dabble in Ruby, play in C and I'm an avid systems administrator.
+# urls:
+#     - text: github
+#       url: https://github.com/liamsymonds
+# baseurl: '/simplygrey-jekyll'
+
+# Site settings
+name: Pooja Sethi
+email: sethi.pooja@gmail.com  
+description: > # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog
 highlighter: pygments
-github: https://www.github.com/liamsymonds
-about: I am an independent developer from the sunny UK. I dabble in Ruby, play in C and I'm an avid systems administrator.
-urls:
-    - text: github
-      url: https://github.com/liamsymonds
-baseurl: '/simplygrey-jekyll'
+urls: "http://yourdomain.com" # the base hostname & protocol for your site
+paginate: 2
+paginate_path: "/blog/page:num/"
+gems: [jekyll-paginate]
+
+# Social media accounts
+twitter: pjasethi
+github: poojasethi
+linkedin: sethipooja
+facebook: pjasethi
+instagram: poojasethi17
+
+# Build settings
+markdown: kramdown
+
