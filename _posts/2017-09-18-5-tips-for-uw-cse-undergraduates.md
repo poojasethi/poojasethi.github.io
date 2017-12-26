@@ -11,7 +11,7 @@ Computer Science & Engineering, more fondly known as UW CSE. Among learning esse
 such as how to balance a binary tree and find the shortest path between nodes in a graph,
 I picked up a few tricks that helped me navigate life as a CSE major.
 
-![The sunset on my UW CSE career, taken from the Paul G. Allen building’s balcony.]({{ "/img/cse_balcony.jpg" | absolute_url | width=50 | height=50}})
+![The sunset on my UW CSE career, taken from the Paul G. Allen building’s balcony.]({{ "/img/cse_balcony.jpg" | absolute_url}})
 *The sunset on my UW CSE career, taken from the Paul G. Allen building’s balcony.*
 
 To current and incoming undergrads, here are five tips that I wish someone had given me when I started.
