@@ -57,7 +57,7 @@ undergrad women of the UW Computer Science & Engineering (CSE) department. The a
 advisors of CSE planned the event, wishing us luck for our future and sharing
 their parting wisdom. We took turns going around the room, and every graduating woman
 gave a short impromptu speech on their experiences in CSE and what they were thankful for.
-Each person was in their tears by the end of their speech.*
+Each person was in tears by the end of their speech.*
 
 *I remember being the last student to give a speech. I don't think words could have
 expressed how I felt, but I said something along the lines of CSE was to me
@@ -80,7 +80,7 @@ and just sit besides the water.*
 ## July
 ![Sequim lavender festival]({{ "/img/2017-in-review/july_2017.jpg" | absolute_url}})
 *Sequim, a small town on the Olympic peninsula of Washington, has an annual lavender
-festival. I went with one of my best friends and her family, and it was probably
+festival. I went with one of my friends and her family, and it was probably
 one of the most fun adventures I had all summer. We took a ferry ride to the
 peninsula and spent the day hand-picking lavender and eating lavender ice cream.
 The best part of the day was when we visited the nearby Dungenes Spit, a strip of beach
