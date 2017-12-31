@@ -34,13 +34,15 @@ still love you anyway.*
 ## March
 ![Gas Works]({{ "/img/2017-in-review/march_2017.jpg" | absolute_url}})
 *Gas Works is such a cool park because of its mix of industrial, forgotten
-tanks against gentle green hills and ocean. It's almost post-apocalyptic.
-Once on New Year's eve, I saw street artists juggling fire here. Another time,
-my friend and I came here and we saw one of the reddest sunsets I've ever seen.
-We also came up with a master plan to one day "buy" the sunset after the
-IPO of our "chai dhukaan" startup ("tea shop" in Hindi); it's a bit of a long running joke...*
+tanks against gentle green hills and ocean. It's almost post-apocalyptic
+to see the earth reclaim human machinery so naturally. The park is also so... Seattle.
+Once on New Year's eve, I saw street artists juggling fire here. Another night,
+my friend and I saw one of the reddest sunsets I've ever witnessed from the park.
 
-*There are so many memories I've made here, but let's leave it at this for now.*
+*On the day we watched the sunset, my friend and I also began scheming for the
+IPO of our "chai dhukaan" startup ("tea shop" in Hindi) and our eventual takeover
+of the skyline, analogous to Amazon; it's a bit of a long running joke...
+There are so many memories I've made here, but let's leave it at this for now.*
 
 ## April
 ![Seattle skyline from a cruise]({{ "/img/2017-in-review/april_2017.jpg" | absolute_url}})
