@@ -47,7 +47,7 @@ There are so many memories I've made here, but let's leave it at this for now.*
 ## April
 ![Seattle skyline from a cruise]({{ "/img/2017-in-review/april_2017.jpg" | absolute_url}})
 *I had never gone to a SASA (South Asian Student Association) / ISA (Indian Student Association)
-formal the whole time I was at UW until this year, when I decided it was
+formal while I was at UW until this year, when I decided it was
 something I should cross off my bucket list as a senior. Held on an Argosy cruise with
 a view of the Seattle skyline, this was a night of Bollywood music and dancing
 at its best. Afterwards, we hungrily devoured Greek fries on the Ave.*
@@ -75,7 +75,7 @@ you wait for the right moment.*
 
 ![Green Lake in the summer]({{ "/img/2017-in-review/june_2_2017.jpg" | absolute_url}})
 *Green Lake was a popular destination for me this year. During the summer, it
-became filled with boats, kids playing in the water, joggers running around the lake,
+became full of boats, kids playing in the water, joggers running around the lake,
 and picnics in the grass. Sometimes on my bike ride back from work, I would stop
 and just sit besides the water.*
 
@@ -96,14 +96,14 @@ that is aptly named Paradise. The photo speaks for itself.*
 ## August
 ![ACL conference in Vancouver]({{ "/img/2017-in-review/august_2017.jpg" | absolute_url}})
 *This year, I travelled to my first two CS research conferences. I attended ACM CHI
-in Denver, which is a conference in Human Computer Interaction. It was really exciting
+in Denver, which is a conference in Human Computer Interaction (HCI). It was really exciting
 to see a project I had been working on since my freshman year, on crowdsourcing speech
 transcription for low-resource languages, culminate.*
 
 *This photo is at ACL in Vancouver,
 another awesome conference in the field of computational linguistics and Natural
 Language Processing (NLP). One of the best parts of this year has been going from a complete newbie
-to the field of NLP, to taking a graduate class, to doing research, to now doing
+to the field of NLP, to taking a graduate class in the subject, to doing research, to now doing
 NLP as my full-time job at Facebook. While I still feel there is a lot more for me to learn,
 it truly is astounding how fast your knowledge of a field can go from 0 to 1
 if you are willing to dedicate yourself to it.*
@@ -121,14 +121,15 @@ wasn't as unlimited of a resource as I thought it was. After graduation, rather 
 a break, I had decided to double down on research and working part-time at a startup
 before having to start my full-time job in the fall. But after months and months
 of pushing it to the extreme, my body decided that it had enough of me. I wanted
-to see sky through the haze, an answer of whom I'm supposed to become,
+to see sky through the haze, an answer to whom I'm supposed to become,
 and I learned that there isn't one.*
 
 
 ## September
 ![Goodbye CSE]({{ "/img/2017-in-review/sep_2017.jpg" | absolute_url}})
-*Leaving behind UW and Seattle felt very bittersweet. While I was excited to start
-the next phase of my life, I also knew I would dearly miss home. Before I left,
+*Leaving behind UW, Seattle, and my family felt very bittersweet. While I was excited to start
+the next phase of my life as a software engineer in the Bay Area,
+I also knew I would dearly miss home. Before I left,
 I went up to the balcony of CSE, out of habit. CSE 2, our new building, is
 like a child -- it seems to grow more and more everyday.
 Whether you want it to or not, the world keeps moving on without you.*
@@ -146,10 +147,13 @@ adulthood.*
 ## November
 ![Reflecting on the Bay Shore]({{ "/img/2017-in-review/nov_2017.jpg" | absolute_url}})
 *Facebook's headquarters in California are along the Bedwell Bayfront park, an
-area of sprawling salt flats that are teeming with wildlife. I was heading to my
-desk from the gym one morning, when I saw a crane posing picturesquely along
-the side of the trail. Naturally, I had to take a picture of it. And Instagram
-it, because well, I do work for Facebook. I wonder what the crane was thinking about.*
+area of sprawling salt flats that are teeming with wildlife. The park is a
+perfect place for reflection and solitude.*
+
+*I was heading to my desk from the gym one morning, when I saw a crane posing
+calmly and picturesquely along the side of the trail. Naturally, I had to take a
+picture of it. And Instagram it, because well, I do work for Facebook.
+I wonder what the crane was thinking about.*
 
 
 ## December
@@ -157,15 +161,15 @@ it, because well, I do work for Facebook. I wonder what the crane was thinking a
 *A few weeks ago, I went on my first-ever downhill ski trip to Lake Tahoe. My friend and
 I got in her car and as we road-tripped through California, we caught up on
 each other's lives, travels, and thoughts on the past and on the future. I went
-down my first Green run, falling half of the way and managing to ski the second
+down my first green-level run, falling half of the way and managing to ski the second
 half, barely holding my balance (internally screaming "pizza" while trying to slow myself
 down). You know have good friends when they literally pick you up when you fall --
 a successful trip overall.*
 
 ![We are seeds]({{ "/img/2017-in-review/dec_2_2017.jpg" | absolute_url}})
-*This year has had its fair share of adventures, ups, and downs. The hardest
-pill to swallow has been that there is no clear path forged in life anymore.
-It's up to me to choose my own adventure.*
+*This year, the hardest pill to swallow has been that there is no clear path
+blazed in life anymore. It's up to me to choose my own adventure. I'm learning
+to live for everyday, the small moments.*
 
 *The walls at Facebook are covered with posters, and this is one of my
-favorites. This year, the seeds took root and tomorrow they'll grow.*
+favorites. This year, the seeds took root. Tomorrow, they'll grow.*
