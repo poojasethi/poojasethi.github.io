@@ -37,7 +37,7 @@ still love you anyway.*
 tanks against gentle green hills and ocean. It's almost post-apocalyptic
 to see the earth reclaim human machinery so naturally. The park is also so... Seattle.
 Once on New Year's eve, I saw street artists juggling fire here. Another night,
-my friend and I saw one of the reddest sunsets I've ever witnessed from the park.
+my friend and I saw one of the reddest sunsets I've ever witnessed from the park.*
 
 *On the day we watched the sunset, my friend and I also began scheming for the
 IPO of our "chai dhukaan" startup ("tea shop" in Hindi) and our eventual takeover
