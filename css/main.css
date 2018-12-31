@@ -168,3 +168,9 @@ div.col-sm-3 img#about {
     height: 50px;
     width: 50px;
 }
+
+.center-image
+{
+    margin: 0 auto;
+    display: block;
+}
