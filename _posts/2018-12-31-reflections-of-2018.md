@@ -19,7 +19,8 @@ hadn't left for a day. Where else besides India would I get to:
   - Stay up late at night gossiping with my aunts and looking through their wedding albums.
   - Play dress-up with my two toddler nieces and watch them giggle.
   - See the village that I was born in.
-  - Tie a rakhi for my cousin and buy a light-up rakhi for my brother.
+  - Tie rakhis for my cousins, and pick out a light-up rakhi for my brother (who
+    knew those exist).
   - Find a crashed plane, plus many inquisitive monkeys and deer, at IIT Madras.
   - Celebrate the marriage of two of my dear friends, with many other friends.
   ![Golden Temple]({{ "/img/2018-in-review/golden_temple.jpg" | absolute_url}}){: .center-image }
@@ -30,7 +31,7 @@ is usually a means to making tangible contributions and impact, and not and end
 in itself. As a result, carving out time to improve your skills takes more
 conscious effort. Luckily, I felt that had ample opportunity for both impact and learning.
 At work, I:
-- Learned how to build a state-of-the-art in conversational AI system from
+- Learned how to build a state-of-the-art conversational AI system from
 the bottom up. My knowledge of semantic parsing, active learning,
 coreference resolution, and dialogue systems has gone from zero to one.
 - Helped Facebook launch its first home device, [Portal](https://portal.facebook.com/), that lets you
@@ -77,7 +78,7 @@ audio book person, but I was wrong. Listening to books instead of music
 while commuting to work, running, or doing laundry adds up like compound interest
  -- it was he best time hack I discovered this year. Audible and even local
 libraries (try the Libby app) have a great selection.
-  - My favorite was _Shoe Dog, by Phil Knight_ (the founder of Nike). Phil's
+  - My favorite read was _Shoe Dog, by Phil Knight_ (the founder of Nike). Phil's
   Pacific Northwest humbleness and hardiness, love for long distance running, and
   desire to make the world better struck me. It's a story I would recommend
   for any ambitious 20-something.
@@ -90,6 +91,7 @@ libraries (try the Libby app) have a great selection.
           * _Born a Crime: Stories From a South African Childhood by Trevor Noah_
           * _On Writing: A Memoir of the Craft by Stephen King_
           * _12 Rules for Life: An Antidote to Chaos by Jordan B. Peterson_
+          * _Becoming by Michelle Obama_
 ![Books]({{ "/img/2018-in-review/books.png" | absolute_url}}){: .center-image }
 5. **Lemon trees.** When I moved into Redwood City, California I was
 surprised to find we had a Meyers lemon tree right in front of the kitchen
