@@ -18,7 +18,8 @@ highlighter: pygments
 urls: "http://yourdomain.com" # the base hostname & protocol for your site
 paginate: 1
 paginate_path: "/blog/page:num/"
-plugins: [jekyll-paginate]
+plugins_dir: [jekyll-paginate]
+gems: [jekyll-paginate]
 
 # Social media accounts
 twitter: pjasethi
