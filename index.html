@@ -1,40 +1,226 @@
 ---
 layout: default
 ---
+<div id="about">
+	<h1>Hi, I'm Pooja.</h1>
+	<p>I'm a machine learning engineer and researcher.</p>
+	<p>Currently, I work on Natural Language Processing (NLP) at <a href="https://tech.fb.com/ar-vr/">Facebook Reality
+			Labs</a>.
+		I graduted from the University of Washington in 2017, with a B.S. in Computer Engineering, where I had the
+		pleasure
+		of working on research in the <a href="https://www.cs.washington.edu/research/nlp">NLP xlab</a> and <a
+			href="https://ictd.cs.washington.edu/">ICTD lab</a>. Previously I also interned at Instagram, Google, and Microsoft.
+	</p>
+	<p>
+		For details about my work, take a peek at my <a href="{{ site.baseurl }}/resources/cv.pdf"> curriculum vitae (CV)</a>.
+	</p>
+	<p>
+		The best way to reach me is via <a href="mailto: {{site.email}}">email</a>.
+	</p>
 
-<!-- This loops through the paginated posts -->
-{% for post in paginator.posts %}
-  <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
-  <p class="author">
-    <span class="date">{{ post.date | date_to_string }}</span>
-  </p>
-  <div class="content">
-    {{ post.content }}
-  </div>
-{% endfor %}
+	<hr>
+	
+	<h1>I build language systems.</h1>
+	<p>I'm interested in building real-world agents that can interact with us using natural language. 
+		Particularly, my interests as an engineer and researcher can be divided into two areas. </p>
+	<div class="media-body">
+		<h4 class="media-heading">Systems for ML</h4>
+		<p>My first set of interests are practical: How can we build tools that make creating an NLP model painless and accessible?
+		While research has so far produced better model architectures, the tools for applying models in real-world settings are still in infancy.
 
-{% if paginator.total_pages > 1 %}
-<div class="pagination">
-  {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Newer</a>
-  {% else %}
-    <span>&laquo; Newer</span>
-  {% endif %}
+		<p>On the engineering front, there are multiple challenges. Processing and labeling training data efficiently, evaluating whether systems are safe to deploy, 
+			and improving systems in an online fashion once they are out in production are essential for success in an applied setting. 
+			On the research front, there is much still to be explored in weak supervision, active learning, and interpretability.</p>
 
-  {% for page in (1..paginator.total_pages) %}
-    {% if page == paginator.page %}
-      <em>{{ page }}</em>
-    {% elsif page == 1 %}
-      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
-    {% else %}
-      <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
-    {% endif %}
-  {% endfor %}
+		I currently spend most of my time focused on these problems.
+		I'm also inspired by work spanning from <a href="https://wit.ai/">Wit</a>, <a href="https://www.snorkel.org/">Snorkel</a>,
+		<a href="https://www.manning.com/books/human-in-the-loop-machine-learning">Human In the Loop ML</a>, 
+		<a href="https://www.youtube.com/watch?v=hx7BXih7zx8">Data Engine</a>, and <a href="https://prodi.gy/">Prodigy</a>.
+	</div> <br />
+	<div class="media-body">
+		<h4 class="media-heading">Conversational Natural Language Processing (NLP)</h4>
+		<p>My second set of interests revolve around an age-old question of AI: How can we build agents capable of interacting with us in a natural, knowledgeable manner?
+		Work such as <a href="https://arxiv.org/abs/2005.14165">GPT-3</a> and <a href="https://ai.googleblog.com/2020/01/towards-conversational-agent-that-can.html">Meena</a> momentarily trick us into believing the problem has been solved, until closer examinations reveal it has not.
+		
+		<p>Studies of language processing in the brain tell us that it's divided into two areas: Wernicke's and Broca's area. The former is responsible for fluency, while the latter
+			is responsible for understanding. With large pretrained language models, we have been able to generate fluent sounding sentences. However, these models lack
+			the contextual understanding necessary to convince us that we are having a "real" conversation. </p>
 
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older &raquo;</a>
-  {% else %}
-    <span>Older &raquo;</span>
-  {% endif %}
+		<p>While achieving human-like conversation may be a lofty goal, recent progress has been promising. With increased contextual understanding (from previous dialog turns, images, etc.) I believe we can get closer to truly conversational systems.</p>
+		</p>
+	</div>
 </div>
-{% endif %}
+
+<!-- <div>
+	<h2>Industry Experience</h2>
+	<div class="media">
+		<div class="media-left media-middle">
+			<img class="media-object resume-logo" src="{{ site.baseurl }}/img/facebook_logo.png" alt="facebook logo">
+		</div>
+		<div class="media-body">
+			<h4 class="media-heading">Facebook</h4>
+			<h5 class="media-heading">Machine Learning Engineer &middot; October 2017 - Present &middot; Menlo Park, CA
+				</h4>
+				<ul>
+					<li>Natural Language Understanding (NLU) team, for Facebook Assistant</li>
+					<li>Building semantic parsing models and infrastructure for <a
+							href="https://portal.facebook.com/">Portal</a>, Oculus, and beyond in <a
+							href="https://pytext.readthedocs.io/en/master/">PyText</a>.</li>
+					<li>Leading projects to improve quality of understanding for real users: active learning, self
+						supervision, data labeling functions.</li>
+				</ul>
+				<span class="badge">Natural Language Processing</span>
+				<span class="badge">PyTorch</span>
+				<span class="badge">Python</span>
+		</div> <br />
+
+		<div class="media">
+			<div class="media-left media-middle">
+				<img class="media-object resume-logo" src="{{ site.baseurl }}/img/instagram_logo.png"
+					alt="instagram logo">
+			</div>
+			<div class="media-body">
+				<h4 class="media-heading">Instagram</h4>
+				<h5 class="media-heading">Machine Learning Engineer Intern &middot; September 2016 - December 2016
+					&middot; Menlo Park, CA</h4>
+					<ul>
+						<li>Instagram Explore team</li>
+						<li>Worked on Story recommendations in the Explore tab.</li>
+						<li>Increased immersive viewer time spent by 8%. Created Hive data pipeline, trained a gradient
+							boosted decision tree CTR model for video channel cover media on Explore, and evaluated
+							model with A/B test</li>
+					</ul>
+					<span class="badge">Python</span>
+					<span class="badge">Machine Learning</span>
+					<span class="badge">Hive</span>
+			</div> <br />
+
+			<div class="media-left media-middle">
+				<img class="media-object resume-logo" src="{{ site.baseurl }}/img/google_logo.png" alt="google logo">
+			</div>
+			<div class="media-body">
+				<h4 class="media-heading">Google</h4>
+				<h5 class="media-heading">Software Engineer Intern &middot; June 2016 - September 2016 &middot; Mountain
+					View, CA</h4>
+					<ul>
+						<li>Payments (Google Finance) team</li>
+						<li>Built an E2E tool to visualize accounting impact of events such as payments, invoices, etc.
+							as transaction is processed.</li>
+					</ul>
+					<span class="badge">Java</span>
+					<span class="badge">AngularJS</span>
+			</div> <br />
+
+			<div class="media-left media-middle">
+				<img class="media-object resume-logo" src="{{ site.baseurl }}/img/microsoft_logo.jpg"
+					alt="microsoft logo">
+			</div>
+			<div class="media-body">
+				<h4 class="media-heading">Microsoft</h4>
+				<h5 class="media-heading">Software Engineer Intern &middot; January 2016 - March 2016 &middot; Bellevue,
+					WA</h4>
+					<ul>
+						<li>Bing Ranking Service team</li>
+						<li>Reduced time to test new features in production beds from several weeks to several days.
+						</li>
+						<li>Built a dynamically linked library (DLL) to support rapid feature development and testing
+							for the ranking model.</li>
+					</ul>
+					<span class="badge">C++</span>
+					<span class="badge">Machine Learning</span>
+			</div> <br />
+
+			<div class="media-left media-middle">
+				<img class="media-object resume-logo" src="{{ site.baseurl }}/img/google_logo.png" alt="google logo">
+			</div>
+			<div class="media-body">
+				<h4 class="media-heading">Google</h4>
+				<h5 class="media-heading">Software Engineer Intern in Tools and Infrastrucutre &middot; September 2015 -
+					December 2015 &middot; Kirkland, WA</h4>
+					<ul>
+						<li><a href="http://research.google.com/archive/spanner.html">Spanner</a> (Google's Globally
+							Distributed Database) Tools & Infra team</li>
+						<li>Designed and developed a graph-based model for GoogleSQL random schema generation to
+							complete Spanner's end-to-end integration testing framework.</li>
+					</ul>
+					<span class="badge">C++</span>
+					<span class="badge">Databases</span>
+			</div> <br />
+
+			<div class="media-left media-middle">
+				<img class="media-object resume-logo" src="{{ site.baseurl }}/img/facebook_logo.png"
+					alt="facebook logo">
+			</div>
+			<div class="media-body">
+				<h4 class="media-heading">Facebook</h4>
+				<h5 class="media-heading">Software Engineer Intern &middot; June 2015 - September 2015 &middot; Menlo
+					Park, CA</h4>
+					<ul>
+						<li>Messenger Payments, Android team</li>
+						<li>Built P2P group sends feature in Messenger E2E, allowing users to send money to friends in a
+							group conversation.</li>
+						<li>Built framework for native Android risk verification flow, migrating away from old mobile
+							site.</a></li>
+					</ul>
+					<span class="badge">Android</span>
+					<span class="badge">Java</span>
+			</div> <br />
+		</div>
+
+		<h2>Research Experience</h2>
+		<div class="media">
+			<div class="media-left media-middle">
+				<img class="media-object resume-logo" src="{{ site.baseurl }}/img/uw_nlp_logo.png" alt="ai2 logo">
+			</div>
+			<div class="media-body">
+				<h4 class="media-heading">University of Washington CSE NLP xLab</h4>
+				<h5 class="media-heading">April 2017 - September 2017 (Part-time) &middot; Seattle, WA</h4>
+					<ul>
+						<li>Started and led Conversational Question Generation (CQG) project i.e. learning to ask
+							questions for chit chat.</li>
+						<li>Developed models for question-asking, via adaptation of the encoder-decoder architecture.
+						</li>
+						<li>Project was selected for <a
+								href="https://research.fb.com/announcing-the-winners-of-the-facebook-parlai-research-awards/">Facebook
+								ParlAI</a> research award grant.</li>
+						<li>Advised by <a href="https://homes.cs.washington.edu/~yejin/">Yejin Choi</a>.</li>
+					</ul>
+					<span class="badge">Natural Language Processing</span>
+					<span class="badge">PyTorch</span>
+					<span class="badge">Python</span>
+			</div> <br />
+
+			<div class="media-left media-middle">
+				<img class="media-object resume-logo" src="{{ site.baseurl }}/img/ictd_logo.png" alt="ictd logo">
+			</div>
+			<div class="media-body">
+				<h4 class="media-heading">University of Washington CSE ICTD Lab</h4>
+				<h5 class="media-heading">April 2014 - June 2017 &middot; Seattle, WA</h4>
+					<ul>
+						<li><a href="http://ictd.cs.washington.edu">Information and Communication Technologies for
+								Development (ICTD) Lab.</a> A research group that focuses on building technology to help
+							people in underserved regions of the world.</li>
+						<li>Developed Respeak, an Android app that uses crowd-sourcing and Automatic Speech Recognition
+							to efficiently transcribe audio files into text. App was deployed in India in summer 2015.
+						</li>
+						<li>Advised by <a href="http://www.adityavashistha.com/">Aditya Vashistha</a> and <a
+								href="http://www.cs.washington.edu/people/faculty/anderson">Richard Anderson</a>.</a>
+						</li>
+					</ul>
+					<span class="badge">Automatic Speech Recognition</span>
+					<span class="badge">Android</span>
+					<span class="badge">Human Computer Interaction</span>
+			</div> <br />
+		</div>
+
+		<h2>Personal</h2>
+		<p>As a kid, every Sunday I would drink chai with my mom and dad and read the Sunday comics. Now I mostly read
+			xkcd (I swear, there's a <a href="https://xkcd.com/722/">relevant xkcd</a> for every situation in my life).
+			I still drink a lot of chai.</p>
+		<p>I love long distance <a href="https://www.strava.com/athletes/10201979">running</a>. 5 half-marathons and
+			counting.</p>
+		<p>I read a lot, and leave reviews on <a
+				href="https://www.goodreads.com/user/show/50338126-pooja-sethi">Goodreads</a>. (If you made it here,
+			feel free to add me.)</p>
+		<p>My Meyers-Briggs personality type is INTJ.</p>
+	</div> -->
