@@ -4,7 +4,7 @@
  * //////////////
  */
 body {
-    color: #424242;
+    color: #000000;
 }
 
 @media (min-width: 768px) {
@@ -30,8 +30,8 @@ h1 {
 h2 {
     font-weight: normal;
     margin-bottom: 5px;
-    color: #BFC0C0;
-    border-bottom: 1px solid #E6E6E6;
+    color: #747575;
+    /* border-bottom: 1px solid #E6E6E6; */
 }
 
 h3 {
@@ -41,12 +41,12 @@ h3 {
 }
 
 a {
-    color: #946E83;
-    font-style: italic;
+    color: #1877f2;
+    /* font-style: italic; */
 }
 
 a:hover {
-  color: #EF8354;
+  color: #be25ec;
   text-decoration: underline;
 }
 
