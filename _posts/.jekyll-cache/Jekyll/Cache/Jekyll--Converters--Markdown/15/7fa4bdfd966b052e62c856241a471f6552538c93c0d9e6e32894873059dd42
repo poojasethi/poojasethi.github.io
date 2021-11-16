@@ -1,0 +1,744 @@
+I"�|<h2 id="overview">Overview</h2>
+<p><img src="http://localhost:4000/img/scaledml-2020/scaledml-cover.png" alt="History of NMT" /></p>
+
+<p>I attended ScaledML 2020 earlier this year. Unlike NeurIPS, ICML, [insert your favorite research-flavored ML conference here], ScaledML is primarily industry-focused. That being said, the quality bar of the presentations is really high. They are also engineering-focused; as a result, I absorbed more relevant ideas attending ScaledML for 1 day than I did from attending NeurIPS for 1 week.</p>
+
+<p>I thought I would share the notes that I took during the conference. Talks that I found particularly interesting are starred (*). Bear in mind that these are stream-of-consciousness notes and have been <em>very</em> minimally edited. For the fully polished presentations, I recommend checking out the <a href="https://info.matroid.com/scaledml-media-archive-2020">ScaledML 2020 videos</a>. As I only attended Day 1/2, only half of the presentations are covered here.</p>
+
+<ol>
+  <li>Turning ML Research into Products for Industry - Reza Zadeh &amp; Matroid Team</li>
+  <li>Machine Learning at Google Scale - Megan Kocholia</li>
+  <li>AI at Tesla - Andrej Karpathy *</li>
+  <li>Large Scale Generative Models and RL - Ilya Sutskever *</li>
+  <li>AI and The Future of Humanity - Oren Etzioni</li>
+  <li>Apache Arrow: Present and Future - Wes McKinney (creator of Pandas), Ursa Labs *</li>
+  <li>Human-centric Approach to ML Infrastructure - Savin Goyal, Netflix *</li>
+  <li>Shipping AI Products - Panel Discussion</li>
+</ol>
+
+<h2 id="turning-ml-research-into-products-for-industry---reza-zadeh--matroid-team">Turning ML Research into Products for Industry - Reza Zadeh &amp; Matroid Team</h2>
+
+<p><em>tl;dr When applying ML to products we need to think about what accuracy is adequate for the use case. Use cases that can tolerate error are a better fit for ML then use cases that can’t. Reza also did a cool demo of his company’s <a href="https://www.matroid.com/">Matroid</a> product (GDocs for annotation, chained detectors, confusion detection, etc). Would be awesome to build something like this for NLP.</em></p>
+
+<ul>
+  <li>Why has it been so hard to put ML from academia into product?
+    <ul>
+      <li>What is <em>adequate</em> accuracy for your use case?
+        <ul>
+          <li>Even at 99% accuracy, mistakes can happen
+            <ul>
+              <li>Accuracy alone is not that meaningful, unless you ground it in something</li>
+              <li>Not even counting traditional software mistakes, bugs, etc. in this talk</li>
+            </ul>
+          </li>
+          <li>Stakes of situation determine what accuracy you need.
+            <ul>
+              <li>Recommendation systems are low stakes, not a big deal if Netflix recommends the wrong movie. Most success with ML has been in low stakes areas so far.</li>
+              <li>Other end: Self-driving cars have been “5 years away” for the past 15 years
+                <ul>
+                  <li>So many edge cases that must be handled. Unclear when we will have it, though Andrej might have some hints :)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Examples in NLP and CV:
+    <ul>
+      <li>Machine translation and speech recognition
+        <ul>
+          <li>People forget there were 5 decades of research before it finally became useful!</li>
+          <li>RBMT &gt; EBMT &gt; SMT &gt; NMT</li>
+        </ul>
+
+        <p><img src="http://localhost:4000/img/scaledml-2020/brief_history_of_nmt.png" alt="History of NMT" />
+  <a href="https://www.freecodecamp.org/news/a-history-of-machine-translation-from-the-cold-war-to-deep-learning-f1d335ce8b5/">Source: Free Code Camp</a></p>
+
+        <ul>
+          <li>Speech recognition only started working in the past 6 - 7 years.
+            <ul>
+              <li>New speech products
+                <ul>
+                  <li>Keyword searches</li>
+                  <li>Voice searches</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>People don’t think long enough about how long it took to work</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Computer vision is finally getting to a point where we can productize it.
+    <ul>
+      <li>Product use cases of CV (Reza had ~10 examples of these):
+        <ul>
+          <li>Restaurant kitchen
+            <ul>
+              <li>Challenges: Hard to enforce rules
+                <ul>
+                  <li>Ensure employees must wash their hands</li>
+                  <li>Ensure no meat on vegetarian cutting board</li>
+                </ul>
+              </li>
+              <li>However if you do this right, adequate accuracy is very low</li>
+            </ul>
+          </li>
+          <li>Retail analytics
+            <ul>
+              <li>Challenges:
+                <ul>
+                  <li>Determine footprint heat maps to determine popularity of shelves</li>
+                  <li>Alert to suspicious employee behavior with freebies</li>
+                  <li>Implement various metrics about time spent by customers</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Roofing manufacturing
+            <ul>
+              <li>On nigh speed manufacturing conveyor belt, identify anomalies early, before defects make it down production pipeline</li>
+              <li>Stop the line if there is a mistake
+                <ul>
+                  <li>The cost of false positive is low (stopping the line takes 30s), cost of false negative is high</li>
+                  <li>If you find an anomaly and fix it, then it saves the company a lot of $</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Summary of use case
+        <ul>
+          <li>Manufacturing</li>
+          <li>Medical Imaging Diagnostic Aid (more discussion on this later)</li>
+          <li>Weaponry :(</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Use cases that can tolerate error are often better candidates for ML</strong>
+    <ul>
+      <li>In CV right now we’er OK at nouns, verbs are coming and ready for products at much smaller rate
+        <ul>
+          <li>There are millions of improvements in noun</li>
+          <li>Verbs get better in thousands per yer</li>
+        </ul>
+      </li>
+      <li>Key for Product Managers
+        <ul>
+          <li>Develop rigorous understanding of how far from AA (adequate accuracy) the team is</li>
+          <li>Not good about modeling rate of change of accuracy in addition to revenue</li>
+        </ul>
+      </li>
+      <li>Rate change matters
+        <ul>
+          <li>CLSVRC top-5 error on ImageNet</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Key takeaway
+    <ul>
+      <li>Thoroughly understand adequate accuracy!</li>
+      <li>Cloud or on-premise Kubernetes</li>
+    </ul>
+  </li>
+  <li>“Live in the Product”
+    <ul>
+      <li>Check out the matroid dashboard!</li>
+      <li>Takes 5PB and index + query</li>
+    </ul>
+  </li>
+  <li>Matroid Demo
+    <ul>
+      <li>Collaborate on the annotation library, invite others to annotate with you (like GDocs)
+        <ul>
+          <li>You can download the data if needed as well</li>
+          <li>Product is point-and-click</li>
+        </ul>
+      </li>
+      <li>Cloud managed locations &amp; on-prem locations
+        <ul>
+          <li>Software considerations you need to make to ML systems deployable</li>
+          <li>Connect thousands of ONVIF Devices</li>
+        </ul>
+      </li>
+      <li>Detecting cars in Bloomberg videos
+        <ul>
+          <li>Cutting edge detector interpretability
+            <ul>
+              <li>PCA projection shows you where the model is confused</li>
+            </ul>
+          </li>
+          <li>Complex things possible
+            <ul>
+              <li>Combine and chain detectors</li>
+              <li>Sliding detectors</li>
+              <li>Improve on existing detectors</li>
+            </ul>
+          </li>
+          <li>Model compression
+            <ul>
+              <li>Parameter pruning, sharing, quantization</li>
+              <li>Low-rank factorization</li>
+              <li>Knowledge distillation</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Can compress &amp; optimize for target edge AI chip, under a week-long SLA</li>
+    </ul>
+  </li>
+  <li>Medical Diagnostics
+    <ul>
+      <li>Diagnosing Glaucoma from OCT Scans
+        <ul>
+          <li>Radiologists are NOT going to be out of a job anytime soon.</li>
+          <li>Better than human detection of glaucoma from OCT scans</li>
+          <li>More likely reality: augment the powers of doctors
+            <ul>
+              <li>New augmentation + cropping strategy proves model uses ares currently ignored by doctors</li>
+              <li>arxiv.org/abs/1910.06302</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Human doctor vs. a matroid model</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Using a small set of labeled data, how to take advantage of unlabeled data?</p>
+
+<ul>
+  <li>It’s not actually that hard to get labeled data</li>
+  <li>Unsupervised learning – that is not quite ready yet. Nothing beats supervised learning yet.</li>
+  <li>Focused on getting people the best situation.</li>
+</ul>
+
+<h2 id="machine-learning-at-google-scale---megan-kocholia">Machine Learning at Google Scale - Megan Kocholia</h2>
+
+<p><em>tl;dr Megan went over Google’s contributions in CV and NLP (esp. BERT, XLNet). Google cloud has a lot of cool offerings. Outside of models there is also a profound increase in requirements for compute. To support this Google is offering Cloud TPU. Data engineering service is also coming soon (</em><a href="https://cloudonair.withgoogle.com/events/data-eng">https://cloudonair.withgoogle.com/events/data-eng</a>)</p>
+
+<ul>
+  <li>Where Google uses ML
+    <ul>
+      <li>Images and Videos</li>
+      <li>Text, Speech, Audio</li>
+    </ul>
+  </li>
+  <li>3 big advances changed everything
+    <ul>
+      <li>Diverse datasets
+        <ul>
+          <li>OpenImage - 9 million images</li>
+          <li>Data privacy and data security are big things as well</li>
+        </ul>
+      </li>
+      <li>Advances in ML techniques in language understanding
+        <ul>
+          <li>RNNs &amp; Transformers (2016 - 2017)</li>
+          <li>BERT (2018)</li>
+          <li>XLNet (2019)
+            <ul>
+              <li>Generalized autoregressive pretraining for language understanding</li>
+              <li>Outperformed BERT</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>The challenge: profound increase in compute requirements
+    <ul>
+      <li>Datasets need lot of compute
+        <ul>
+          <li>Hundreds of thousands, millions of labels</li>
+          <li>High-quality labelset</li>
+        </ul>
+      </li>
+      <li>Increases in model accuracy require much more compute
+        <ul>
+          <li>Accelerators, TPUs</li>
+          <li>TPUv2: Google’s first Tensor Processing Unit (TPU)</li>
+          <li>Cloud TPU v2 Pod: now GA</li>
+          <li>g.co/cloudtpu</li>
+        </ul>
+      </li>
+      <li>Rapid progress
+        <ul>
+          <li>TPU v1</li>
+          <li>TPU v2</li>
+          <li>TPU v3</li>
+        </ul>
+      </li>
+      <li>Cloud TPU Pod
+        <ul>
+          <li>11.5 petaflops -&gt; 100! petaflops</li>
+        </ul>
+      </li>
+      <li>Scalable
+        <ul>
+          <li>As soon as you fix one bottleneck new ones show up</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="ai-at-tesla---andrej-karpathy-">AI at Tesla - Andrej Karpathy *</h2>
+
+<p><em>tl;dr Tesla Autopilot is all driven by Computer Vision, there is no need for Lidar at all! Why has self-driving cars taken so long? Mostly because of hard edge cases that must be handled. Tesla has the world’s largest collection of weird stop signs. “Operation Vacation” is similar to AutoNLU in that you run unit tests, if they fail, collect more training data until the model gets it right.</em></p>
+
+<ul>
+  <li>Averting Collisions
+    <ul>
+      <li>10-100s of Pedestrain AEBs</li>
+    </ul>
+  </li>
+  <li>Tesla Autopilot
+    <ul>
+      <li>Full self-driving</li>
+      <li>What is taking so long? Why are we so late?
+        <ul>
+          <li>Waymo 10 years ago vs. Tesla</li>
+          <li>What’s different
+            <ul>
+              <li>Use entirely vision-based approach (no Lidar)!</li>
+              <li>No HD maps</li>
+            </ul>
+          </li>
+          <li>Harder problem, but once we have it, we can deploy it to millions of cars</li>
+          <li>So many edge cases
+            <ul>
+              <li>Going through the long tail and sourcing for examples of failure</li>
+              <li><strong>Data Engine</strong>
+                <ul>
+                  <li><strong>Process by which we apply active learning – find examples where the model is failing and label those.</strong></li>
+                  <li><strong>This is the bread-and-butter of how to make the system work</strong></li>
+                </ul>
+              </li>
+              <li>Put just as much work as testing as we do in training
+                <ul>
+                  <li>Built out complicated unit tests that cover every case</li>
+                  <li>This is very similar to slice-based testing!</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Modeling
+            <ul>
+              <li>HydraNet
+                <ul>
+                  <li>48 networks</li>
+                  <li>1,000 distinct prdictions (# of output tensors)
+                    <ul>
+                      <li>None of these tensors can regress and all of them must improve over time</li>
+                      <li>70,000 GPU hours</li>
+                    </ul>
+                  </li>
+                  <li>All of this is maintained by a dozen people</li>
+                </ul>
+              </li>
+              <li><strong>Operation Vacation</strong>
+                <ul>
+                  <li>new task —–&gt; (latency) All unit tests pass. It runs in the car, works well.</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Neural Networks for FSD
+            <ul>
+              <li>Software is eating the world
+                <ul>
+                  <li>Software 2.0 is eating Software 1.0
+                    <ul>
+                      <li>Code is the outcome of an optimization</li>
+                      <li>“Compiler” takes dataset and spits out the model</li>
+                      <li>You can engulf more and more of the Software 1.0 stack.</li>
+                      <li>
+                        <p>Fusion layer -&gt;  module -&gt; BEV Net</p>
+
+                        <p>Temporal</p>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>Per-pixel depths from vision, without Lidar
+                <ul>
+                  <li>Predict the depth, then cast out into 3D</li>
+                </ul>
+              </li>
+              <li>When people are driving, they are already teaching you how to drive the car
+                <ul>
+                  <li>With self-supervised learning, we could speed up the rate at which we collect labeled data. However, this is still a long-term research direction rather than a short-term reality.</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>tesla.com/autopilotAI
+        <ul>
+          <li>Team is tiny, only dozens of people!</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="large-scale-generative-models-and-rl---ilya-sutskever-">Large Scale Generative Models and RL - Ilya Sutskever *</h2>
+
+<p><em>tl;dr Generative models and RL can lead to cool and often even human-interpretable results (in the hide and seek game below, agents get progressively smarter). The models are not only more powerful than people thought but also creative. Main criticism of self-learning / RL is that it cannot be applied to the real world, but that might be changing with models like <a href="https://openai.com/blog/solving-rubiks-cube/">Dactyl</a> which use “Automatic Domain  Randomization” to increase robustness.</em></p>
+
+<ul>
+  <li><a href="https://openai.com/blog/openai-five/">OpenAI Five</a>
+    <ul>
+      <li>Play the game DOTA2</li>
+      <li>DOTA: a grand challenge (but not any more) - Paper is out!
+        <ul>
+          <li>More similar to the real word than other games</li>
+          <li>We beat the world champions 2-0 in a best of-three live match</li>
+          <li>Very large scale deep RL
+            <ul>
+              <li>45,000 years of gameplay</li>
+              <li>Self play – no data from human players</li>
+              <li>Where is the science?
+                <ul>
+                  <li>Learning is that it is a lot more powerful than people thought</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Learning is Human-Interpretable
+        <ul>
+          <li>Learning gets stuck for human-enterable reasons</li>
+          <li>Human-interpretable reward shaping gets it unstuck</li>
+          <li>Cool example with hiders and seeker agents. Hiders learn to push blocks into position, seekers learn to move or jump over the blocks.</li>
+        </ul>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/kopoLzvh5jY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+      </li>
+      <li>Emergent Tool Use from Multi-Agent Interaction
+        <ul>
+          <li>Systems can actually be creative in a meaningful way</li>
+          <li>Different from supervised learning – doesn’t just do what the data tells it to</li>
+          <li>Requires tons of compute and “experience” – how to apply to a real world problem?
+            <ul>
+              <li>This was the motivation for Dactyl</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Dactyl
+        <ul>
+          <li>Training a hand to solve a Rubk’s cube</li>
+          <li>Domain randomization</li>
+          <li>Why can’t we train this in a simulation rather in the real world?
+            <ul>
+              <li>Simulating friction is NP-complete</li>
+              <li>Lots of physical factors are hard to model</li>
+              <li>How to deal with the unknowns?</li>
+              <li>Want to train a robust policy that can handle all of these variations.</li>
+            </ul>
+          </li>
+          <li>Automatic Domain Randomization
+            <ul>
+              <li>ADP applied to the size of the Rubrik’s cube</li>
+            </ul>
+          </li>
+          <li>Large scale RL
+            <ul>
+              <li>Training experience: 12,000 years</li>
+              <li>Reorient the block and rotate the faces</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>GPT-2
+        <ul>
+          <li>Unsupervised learning by predicting the next word</li>
+          <li>If you train a model to understand what word comes next, you should get something that understands</li>
+          <li>Architecture of GPT-2:
+            <ul>
+              <li>1.5B parameter transformer</li>
+              <li>WebText - high variety training work</li>
+              <li>100 Voltas for a week</li>
+            </ul>
+          </li>
+          <li>Zero-shot Question Answering
+            <ul>
+              <li>Write down a question, and it will answer it, often correctly</li>
+            </ul>
+          </li>
+          <li>Zero-shot learning
+            <ul>
+              <li>To summarize, just append TL;DR to a document</li>
+              <li>
+                <p>To translate French to English, do:</p>
+
+                <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="s">fr_1 = en_1]</span>
+  <span class="s">fr_2 = en_2</span>
+  <span class="s">...</span>
+  <span class="s"># type in</span><span class="err">:</span>
+  <span class="s">frn_n =</span> 
+  <span class="s"># (and the model completes it correctly</span>
+</code></pre></div>                </div>
+              </li>
+              <li>Pretty surprising that this works, especially given that non-English sentences were stripped before training the LM.</li>
+            </ul>
+          </li>
+          <li>Popular impact
+            <ul>
+              <li>“Talk to Transformer’</li>
+              <li>AI Dungeon 2
+                <ul>
+                  <li>Game with Infinite Adventures</li>
+                  <li>100 million inferences done on their NN</li>
+                  <li>Create an adventure game about literally anything</li>
+                </ul>
+              </li>
+              <li>Smart Compose for code.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="ai-and-the-future-of-humanity---oren-etzioni">AI and The Future of Humanity - Oren Etzioni</h2>
+
+<p><em>tl;dr Oren argues that while superintelligence is unlikely, it may be worth preparing for. He presents some canaries in the coalmine that would indicate superintelligence is near. TBH I would have liked to see more discussion on the real immediate risks rather than the abstract ones.</em></p>
+
+<ul>
+  <li>Do we need to worry about super intelligence (AGI) yet?
+    <ul>
+      <li>Most engineers and scientists at the conference are not concerned (by show of hands).</li>
+      <li>But some famous scientists and engineers are  . . . Stephen Hawking, Bill Gates, Elon Musk. And so is the general public.</li>
+    </ul>
+  </li>
+  <li>What would tell use if we are close to super intelligence? Maybe it is worth building up a catalog of canaries in the coal mine.
+    <ul>
+      <li>Oren had a recent <a href="https://www.technologyreview.com/s/615264/artificial-intelligence-destroy-civilization-canaries-robot-overlords-take-over-world-ai/">MIT TR article</a> about this topic</li>
+      <li>What’s in the canary catalog?
+        <ul>
+          <li>Inflection points for AI:
+            <ul>
+              <li><em>Automatic formulation of learning problems</em></li>
+              <li><em>Approximating human common sense</em></li>
+            </ul>
+          </li>
+          <li>Automatic formulation of learning problems
+            <ul>
+              <li>ML is still 99% human work!
+                <ul>
+                  <li>Inputs in ML are: Labels, Data, Algorithms.
+                    <ul>
+                      <li>All which require lots of labor and engineering still.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>Codifying principles is not easy.
+                <ul>
+                  <li>First, AI should do no harm – Issac Asimov’s Laws for Robotics.</li>
+                  <li>But what is even meant by “harm”? No easy way to encode that.</li>
+                </ul>
+              </li>
+              <li>Biggest problem is trying to align what the machine is optimizing to our own “loss function” (this is hard to articulate).
+                <ul>
+                  <li>Can we learn preferences?
+                    <ul>
+                      <li>Human preferences often come into conflict.
+                        <ul>
+                          <li>Want to lose weight, but also eat muffins for breakfast?</li>
+                        </ul>
+                      </li>
+                      <li>This compatibility requires dialog with humans.</li>
+                      <li>Preferences only make sense in context of commonsense knowledge</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Approximating human common sense
+            <ul>
+              <li>What is common sense?
+                <ul>
+                  <li>“The basic ability to perceive, understand, and judge things shared by nearly all people”
+                    <ul>
+                      <li>Common facts</li>
+                      <li>Intuitive facts</li>
+                      <li>Intuitive psychology</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>Wingorad Schemas
+                <ul>
+                  <li>“The large ball crashes right through the table because it was made of steel.”
+                    <ul>
+                      <li>What does “it” refer to?</li>
+                    </ul>
+                  </li>
+                  <li>WinoGrande - Winner of AAAI 2020 Distinguished Paper Award</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>So, should we worry about super intelligence?
+    <ul>
+      <li>Nick Bostrom’s Meta-Algorithm
+        <ul>
+          <li>What if we’re wrong and humanity is destroyed?
+            <ul>
+              <li>Implication: must do everything in prepare!</li>
+            </ul>
+          </li>
+          <li>This is analogous to Pascal’s Wager (17th Century theological argument)
+            <ul>
+              <li>You believe in God, God exists (Eternal Heaven)</li>
+              <li>You believe in God, doesn’t exist (Nothing Happens)</li>
+              <li>You don’t believe in God, God exists (Eternal Hell)</li>
+              <li>You don’t believe in God, God doesn’t exist (Nothing Happens)</li>
+            </ul>
+          </li>
+          <li>The only rational thing to do is to believe in God, even if the chance is 1 in a million.</li>
+          <li>By analogy, it is rational to prepare for superintelligence?
+            <ul>
+              <li>Obviously, this is a reductive argument.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Dr. Etzioni’s “Prescription for AI”
+    <ul>
+      <li>Identify and monitor canaries</li>
+      <li>Address real world AI challenges with both improved technology and regulation of AI applications</li>
+      <li>Continue to build and scale AI for the Common Good</li>
+    </ul>
+  </li>
+  <li><em>“Worrying about AI turning evil is a little bit like worrying about overpopulation on Mars.” — Andrew Ng</em></li>
+</ul>
+
+<h2 id="apache-arrow-present-and-future---wes-mckinney-creator-of-pandas-ursa-labs-">Apache Arrow: Present and Future - Wes McKinney (creator of Pandas), Ursa Labs *</h2>
+
+<p><em>tl;dr Former creator of Pandas is working on a new project to unify data processing libraries. Contribute and provide feedback if you are interested!</em></p>
+
+<ul>
+  <li>About Wes: the creator of Pandas. Studied at MIT, did investment banking and started pandas, started PhD then dropped out to work on open source projects full-time.</li>
+  <li>Covering the “boring part” of ML i.e. data processing.
+    <ul>
+      <li><a href="http://ursalabs.org">ursalabs.org</a> - goal is to develop portable data processing libraries that can be used across many langauges</li>
+      <li><a href="http://discuss.ossdata.org">discuss.ossdata.org</a> - contribute to open source data processing</li>
+    </ul>
+  </li>
+  <li>Language independent open source in-memory data processing</li>
+  <li>You should have 10X as much RAM as your dataset</li>
+</ul>
+
+<h2 id="human-centric-approach-to-ml-infrastructure---savin-goyal-netflix-">Human-centric Approach to ML Infrastructure - Savin Goyal, Netflix *</h2>
+
+<p><em>tl;dr Savin developed a program called Metaflow after realizing data scientists were spending a lot of time on engineering problems outside of their core job. This was also causing the iteration cycle for product questions to be quite slow (2+ months). End result feels very similar to fblearner flow. Cool to see how this would be built with non-internal technologies.</em></p>
+
+<ul>
+  <li>Michael Stonebreaker’s definition of scale: Volume, Velocity, Variety</li>
+  <li>ETL for data (what is ETL)</li>
+  <li>Most data scientist work ends up being engineering time — how to avoid that?</li>
+  <li>What is the data science stack?
+    <ul>
+      <li>Data warehouse (S3)</li>
+      <li>Compute resources (kubernetes)</li>
+      <li>Orchestration (Apache airflow)</li>
+      <li>Packaging (docker)</li>
+      <li>Metadata and versioning (git)</li>
+      <li>Development environment (Jupyter)</li>
+      <li>ML libraries</li>
+    </ul>
+  </li>
+  <li>Introducing “Metaflow” (metaflow.org)
+    <ul>
+      <li>Lots of parallels to fblearner, but built by Netflix and open source.</li>
+      <li>Supports two human activities: building and deploying data science workflows</li>
+      <li>Building
+        <ul>
+          <li>Arrange compute in a graph</li>
+          <li>How to access more CPUs, GPUs or memory?</li>
+          <li>How to version my results and access results by others?</li>
+        </ul>
+      </li>
+      <li>Deploy
+        <ul>
+          <li>How to monitor models and examine results?</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>What is the difference between Airbnb’s AirFlow vs MetaFlow?
+    <ul>
+      <li>Airflow has a subset of the capabilities of MetaFlow. Mostly used for orchestration/scheduling.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="shipping-ai-products---panel-discussion">Shipping AI Products - Panel Discussion</h2>
+
+<p><em>tl;dr Lots of parallels to Reza’s talk. Need to be mindful if ML is actually solving the product problem. Data moats are not really a thing (customers and not ML companies are owners of the data) , and labeling is a under-looked problem. Some really interesting ideas about unit testing models and adding assertions to verify correctness. If the assertion fires, then add more data until the model gets it right.</em></p>
+
+<ul>
+  <li>Robert Munro (author of Human In the Loop book!),  Peter Bailis (starter of DAWN project, founder of Sisu Data)</li>
+  <li>Expectation vs reality
+    <ul>
+      <li>Where has ML worked? Recommendation systems vs “here is the answer” — low cost of being wrong.</li>
+      <li>Data moats — most overlooked issues. Data labeling is an afterthought. We should flip that around.</li>
+    </ul>
+  </li>
+  <li>Add “assertions” for models to make sure they are doing the right thing.
+    <ul>
+      <li>If you me assertion fires then what do you do? Correct the label and retrain.</li>
+    </ul>
+  </li>
+  <li>Time to accuracy is also interesting and under looked problem. Want to get high accuracy quickly.
+    <ul>
+      <li>Reinventing what accuracy means.</li>
+      <li>Great expectations — unit testing for models.</li>
+    </ul>
+  </li>
+  <li>Papers with code (SOTA benchmarking - continuous integration for model behavior)</li>
+  <li>Infancy of ML monitoring
+    <ul>
+      <li>Benchmarks for models — many people don’t have them.</li>
+      <li>Frame a problem and have an accuracy metric.  Need to understand: But how does that correlate to a product metric?</li>
+    </ul>
+  </li>
+  <li>What about synthetic data?
+    <ul>
+      <li>The most exciting use case is for rare events, rather than for general bootstrapping.</li>
+      <li>Some classes are very robust to noisy labels, others need more accurate labels.</li>
+    </ul>
+  </li>
+  <li>Data scavenging</li>
+  <li>If you had to give one word of advice for ML Product, what would it be?
+    <ul>
+      <li>Understand the problem you are trying to solve, without tying the worlds ML and AI in.</li>
+      <li>Read up on enterprise sales.</li>
+      <li>Be obsessed with the problem, not the solution.</li>
+    </ul>
+  </li>
+</ul>
+:ET
