@@ -5,7 +5,12 @@ layout: default
 
 	<h1>Hi, I'm Pooja.</h1>
 
-	<a href="{{ site.baseurl }}/"><img id="about" src="{{ site.baseurl }}/img/me.jpg" ALIGN=”left”  height="225px" width="140px" alt="Just chillin'" /></a>
+	<div class="col-profile-photo">
+		<a href="{{ site.baseurl }}/">
+			<img id="about" src="{{ site.baseurl }}/img/me.jpg" height="180px" width="120px"
+				alt="Just chillin'" /><br />
+		</a>
+	</div>
 
 	<p>I am a machine learning engineer, researcher, and writer. My research and engineering interests are at the intersection of language, speech, and vision. I strongly believe in building technology for human good. These days, I mostly think about how to make LLMs better at multilingual tasks and more efficient. </p>	
 
@@ -29,7 +34,7 @@ layout: default
 	</p>
 
 	<p>
-		The best way to reach me is via <a href="mailto: {{site.email}}">email</a>.
+		The best way to reach me is via <a href="mailto: {{site.email}}">email</a>.	
 	</p>
 
 

@@ -174,3 +174,12 @@ div.col-sm-3 img#about {
     margin: 0 auto;
     display: block;
 }
+
+div.col-profile-photo img#about {
+    -webkit-border-radius: 50px;
+    margin-left: auto;
+    margin-bottom: 10px;
+    float: right;
+    padding-right: 10px;
+}
+
