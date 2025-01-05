@@ -2,8 +2,9 @@
 layout: default
 ---
 
-<div id="archives">
-  <h1>archives</h1>
+<div id="blog">
+  <h1>writings on work and life</h1>
+  <p>I write a blog post at the end of each year and sometimes in between.</p>
   <ul class="posts">
     {% for post in site.posts %}
       <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>

@@ -176,12 +176,19 @@ div.col-sm-3 img#about {
     display: block;
 }
 
+img {
+    width: 100%;
+    height: auto;
+}
+
 div.col-profile-photo img#about {
     -webkit-border-radius: 50px;
     margin-left: auto;
     margin-bottom: 10px;
     float: right;
     padding-right: 10px;
+    width: 20%;
+    height: auto;
 }
 /* 
 body {
@@ -195,3 +202,4 @@ body {
       'DejaVu Serif', 
       'serif'; 
   } */
+
