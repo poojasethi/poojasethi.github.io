@@ -1,8 +1,48 @@
 /**
+ * Color tokens (light mode defaults)
+ */
+:root {
+    --bg:              #ffffff;
+    --text:            #000000;
+    --text-muted:      #666;
+    --heading-1:       #575C55;
+    --heading-2:       #747575;
+    --heading-3:       #BFC0C0;
+    --link:            #1877f2;
+    --link-hover:      #be25ec;
+    --sidebar-name:    #4A4A4A;
+    --sidebar-about:   #8C8C8C;
+    --footer-border:   #E6E6E6;
+    --footer-text:     #C2C2C2;
+    --code-bg:         #333333;
+    --content-border:  #333333;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg:              #1c1c1e;
+        --text:            #e0e0e0;
+        --text-muted:      #999;
+        --heading-1:       #a5aaa3;
+        --heading-2:       #8a8b8b;
+        --heading-3:       #4a4a4a;
+        --link:            #6ba3f5;
+        --link-hover:      #d166f5;
+        --sidebar-name:    #c8c8c8;
+        --sidebar-about:   #888;
+        --footer-border:   #2c2c2e;
+        --footer-text:     #555;
+        --code-bg:         #2a2a2a;
+        --content-border:  #444;
+    }
+}
+
+/**
  * Master styling
  */
 body {
-    color: #000000;
+    background-color: var(--bg);
+    color: var(--text);
     font-family: system-ui, -apple-system, sans-serif;
     font-size: 14px;
     line-height: 1.428571429;
@@ -23,28 +63,28 @@ span.time {
 
 h1 {
     font-weight: normal;
-    color: #575C55;
+    color: var(--heading-1);
     margin-bottom: 10px;
 }
 
 h2 {
     font-weight: normal;
     margin-bottom: 5px;
-    color: #747575;
+    color: var(--heading-2);
 }
 
 h3 {
     font-weight: normal;
     margin-bottom: 5px;
-    color: #BFC0C0;
+    color: var(--heading-3);
 }
 
 a {
-    color: #1877f2;
+    color: var(--link);
 }
 
 a:hover {
-    color: #be25ec;
+    color: var(--link-hover);
     text-decoration: underline;
 }
 
@@ -65,18 +105,18 @@ div#container {
     flex-shrink: 0;
     padding-top: 150px;
     font-size: 14px;
-    color: #666;
+    color: var(--text-muted);
 }
 
 .sidebar strong {
     font-size: 16px;
-    color: #4A4A4A;
+    color: var(--sidebar-name);
     font-weight: normal;
 }
 
 .sidebar div#about {
     margin-top: 10px;
-    color: #8C8C8C;
+    color: var(--sidebar-about);
 }
 
 .sidebar img#about {
@@ -109,16 +149,49 @@ div#container {
 }
 
 /**
+ * Social icon links
+ */
+.social-links {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+}
+
+.social-links li {
+    margin: 5px 0;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    color: var(--link-hover);
+    text-decoration: none;
+}
+
+.social-links svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    fill: currentColor;
+}
+
+/**
  * Content column formatting
  */
 div.content {
-    border-top: 1px solid #333333;
+    border-top: 1px solid var(--content-border);
     margin-top: 5px;
     padding-top: 5px;
 }
 
 div.content pre {
-    background: #333333;
+    background: var(--code-bg);
     padding: 5px;
     color: #FFF;
     overflow-x: auto;
@@ -127,15 +200,15 @@ div.content pre {
 }
 
 div.content .highlight {
-    background: #333333;
+    background: var(--code-bg);
 }
 
 footer {
-    border-top: 1px solid #E6E6E6;
+    border-top: 1px solid var(--footer-border);
     margin-top: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
-    color: #C2C2C2;
+    color: var(--footer-text);
     font-size: 14px;
 }
 
@@ -170,4 +243,19 @@ div.col-profile-photo img#about {
     padding-right: 10px;
     width: 24%;
     height: auto;
+}
+
+/**
+ * Selected work
+ */
+.work-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px;
+}
+
+.work-list li {
+    margin-bottom: 8px;
+    padding-left: 1em;
+    border-left: 2px solid var(--footer-border);
 }
