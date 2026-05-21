@@ -1,19 +1,19 @@
 /**
- * //////////////
  * Master styling
- * //////////////
  */
 body {
     color: #000000;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
 }
 
-@media (min-width: 768px) {
+p {
+    margin: 0 0 10px;
 }
 
 /**
- * //////////////////////////
  * Font and link declarations
- * //////////////////////////
  */
 span.time {
     color: #ADADAD;
@@ -31,7 +31,6 @@ h2 {
     font-weight: normal;
     margin-bottom: 5px;
     color: #747575;
-    /* border-bottom: 1px solid #E6E6E6; */
 }
 
 h3 {
@@ -42,34 +41,76 @@ h3 {
 
 a {
     color: #1877f2;
-    /* font-style: italic; */
 }
 
 a:hover {
-  color: #be25ec;
-  text-decoration: underline;
+    color: #be25ec;
+    text-decoration: underline;
 }
 
 /**
- * /////////////////
- * Container element
- * /////////////////
+ * Layout
  */
 div#container {
-    width: 700px;
-    margin: auto;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    gap: 2.5rem;
+    align-items: flex-start;
+}
+
+.sidebar {
+    width: 200px;
+    flex-shrink: 0;
+    padding-top: 150px;
+    font-size: 14px;
+    color: #666;
+}
+
+.sidebar strong {
+    font-size: 16px;
+    color: #4A4A4A;
+    font-weight: normal;
+}
+
+.sidebar div#about {
+    margin-top: 10px;
+    color: #8C8C8C;
+}
+
+.sidebar img#about {
+    border-radius: 150px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    padding-top: 2rem;
+}
+
+@media (max-width: 640px) {
+    div#container {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding-top: 1.5rem;
+    }
+
+    .main-content {
+        padding-top: 1rem;
+    }
 }
 
 /**
- * //////////////////////////////////
- * Right aka content column formatting
- * //////////////////////////////////
+ * Content column formatting
  */
-div.right {
-    width: 500px;
-    float: left;
-}
-
 div.content {
     border-top: 1px solid #333333;
     margin-top: 5px;
@@ -85,81 +126,22 @@ div.content pre {
     font-size: 15px;
 }
 
-
 div.content .highlight {
-	background: #333333;
+    background: #333333;
 }
 
 footer {
     border-top: 1px solid #E6E6E6;
-    width: 100%;
-    height: 10px;
     margin-top: 10px;
     padding-top: 10px;
+    padding-bottom: 10px;
     color: #C2C2C2;
     font-size: 14px;
-    bottom: 0;
-    padding-bottom: 10px;
-}
-
-footer div#github {
-	text-align: right;
-}
-
-div.right h1 {
-	margin-bottom: -2px;
-}
-
-div.right ul {
-	list-style: none;
-	margin-left: 0;
-	padding: 0;
-}
-
-div.right ul li {
-	margin-top: 5px;
-	margin-left: 0;
-	padding: 0;
-}
-
-div.right .post ul {
-	list-style: square;
-	margin-left: 15px;
 }
 
 /**
- * ///////////////////////////////////
- * Left column aka nav bar formatting
- * ///////////////////////////////////
+ * Custom styling
  */
-div.col-sm-3 {
-        margin-top: 100px;
-        font-size: 14px;
-        color: #666;
-}
-
-div.col-sm-3 strong {
-        font-size: 16px;
-        color: #4A4A4A;
-        font-weight: normal;
-}
-
-div.col-sm-3 div#about {
-        margin-top: 10px;
-		color: #8C8C8C;
-}
-
-div.col-sm-3 img#about {
-    -webkit-border-radius: 150px;
-    margin-bottom: 10px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/**
- * Pooja's custom styling.
- */
-
 #connect img {
     height: 30px;
     width: 30px;
@@ -170,8 +152,7 @@ div.col-sm-3 img#about {
     width: 50px;
 }
 
-.center-image
-{
+.center-image {
     margin: 0 auto;
     display: block;
 }
@@ -182,24 +163,11 @@ img {
 }
 
 div.col-profile-photo img#about {
-    -webkit-border-radius: 50px;
+    border-radius: 50px;
     margin-left: auto;
     margin-bottom: 10px;
     float: right;
     padding-right: 10px;
-    width: 20%;
+    width: 24%;
     height: auto;
 }
-/* 
-body {
-    font-family: 
-      'Georgia', 
-      'Times New Roman', 
-      Times, 
-      serif, 
-      'Palatino Linotype', 
-      'Book Antiqua', 
-      'DejaVu Serif', 
-      'serif'; 
-  } */
-
