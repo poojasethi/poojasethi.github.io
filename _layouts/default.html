@@ -21,6 +21,14 @@
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" type="image/x-icon" href="{{ site.baseurl }}/img/favicon.ico?">
+
+	<!-- Prevent flash of wrong theme -->
+	<script>
+		(function() {
+			var t = localStorage.getItem('theme');
+			if (t) document.documentElement.setAttribute('data-theme', t);
+		})();
+	</script>
 </head>
 
 <body>
@@ -31,7 +39,11 @@
 			<strong>Pooja Sethi</strong> <br />
 			<a href="{{ site.baseurl }}/index">about</a> <br />
 			<a href="{{ site.baseurl }}/blog">blog</a> <br />
-			<a href="{{ site.baseurl }}/resources/cv.pdf">cv</a><br /><br />
+			<a href="{{ site.baseurl }}/resources/cv.pdf">cv</a> &nbsp;
+			<button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+				<svg id="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+				<svg id="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm-1-6h2v3h-2V3zm0 15h2v3h-2v-3zM3 11h3v2H3v-2zm15 0h3v2h-3v-2zM5.636 4.222l1.414 1.414-1.414 1.414L4.222 5.636l1.414-1.414zm12.728 12.728 1.414 1.414-1.414 1.414-1.414-1.414 1.414-1.414zM4.222 18.364l1.414-1.414 1.414 1.414-1.414 1.414-1.414-1.414zm14.142-14.142 1.414 1.414-1.414 1.414-1.414-1.414 1.414-1.414z"/></svg>
+			</button><br /><br />
 
 			<div id="about">
 				<strong>Hello 👋🏽</strong><br />
@@ -71,6 +83,20 @@
 							Threads
 						</a>
 					</li>
+					<li>
+						<a href="https://x.com/{{ site.twitter }}" title="X">
+							<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+							X
+						</a>
+					</li>
+					{% if site.scholar != "" %}
+					<li>
+						<a href="https://scholar.google.com/citations?user={{ site.scholar }}" title="Google Scholar">
+							<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
+							Scholar
+						</a>
+					</li>
+					{% endif %}
 				</ul>
 			</div>
 
@@ -85,6 +111,33 @@
 		</div>
 
 	</div>
+
+	<script>
+		var btn = document.getElementById('theme-toggle');
+		var sun = document.getElementById('icon-sun');
+		var moon = document.getElementById('icon-moon');
+
+		function isDark() {
+			var t = document.documentElement.getAttribute('data-theme');
+			if (t === 'dark') return true;
+			if (t === 'light') return false;
+			return window.matchMedia('(prefers-color-scheme: dark)').matches;
+		}
+
+		function updateIcon() {
+			sun.style.display = isDark() ? 'block' : 'none';
+			moon.style.display = isDark() ? 'none' : 'block';
+		}
+
+		btn.addEventListener('click', function() {
+			var next = isDark() ? 'light' : 'dark';
+			document.documentElement.setAttribute('data-theme', next);
+			localStorage.setItem('theme', next);
+			updateIcon();
+		});
+
+		updateIcon();
+	</script>
 
 </body>
 
