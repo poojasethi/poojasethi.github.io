@@ -22,6 +22,11 @@
 	<!-- Favicon -->
 	<link rel="shortcut icon" type="image/x-icon" href="{{ site.baseurl }}/img/favicon.ico?">
 
+	{% if page.layout == "post" %}
+	<!-- KaTeX -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+	{% endif %}
+
 	<!-- Prevent flash of wrong theme -->
 	<script>
 		(function() {
@@ -113,6 +118,17 @@
 		</div>
 
 	</div>
+
+	{% if page.layout == "post" %}
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+		onload="renderMathInElement(document.body, {
+			delimiters: [
+				{left: '$$', right: '$$', display: true},
+				{left: '$', right: '$', display: false}
+			]
+		});"></script>
+	{% endif %}
 
 	<script>
 		var btn = document.getElementById('theme-toggle');
