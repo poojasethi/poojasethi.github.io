@@ -1,13 +1,40 @@
 ---
 layout: default
+title: Writing
+summary: Notes on AI research, plus personal essays, by Pooja Sethi.
 ---
+<div class="writing-page">
+  <h1 class="page-title">Writing</h1>
+  <p class="lede">Notes on AI research, plus personal essays.</p>
 
-<div id="blog">
-  <h1>writings on work and life</h1>
-  <p>I write a blog post at the end of each year and sometimes in between.</p>
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ul>
+  <section aria-labelledby="technical-h">
+    <h2 id="technical-h">Technical</h2>
+    {% assign technical_posts = site.posts | where_exp: "post", "post.categories contains 'technical'" %}
+    {% if technical_posts.size > 0 %}
+      {% include post-list.html category="technical" %}
+    {% else %}
+      <p class="soon">First post coming soon.</p>
+    {% endif %}
+  </section>
+
+  {% assign personal_posts = site.posts | where_exp: "post", "post.categories contains 'personal'" %}
+  <section id="personal" aria-label="Personal essays">
+    <details>
+      <summary><span id="personal-label">Show {{ personal_posts.size }} personal essays</span></summary>
+      {% include post-list.html category="personal" %}
+    </details>
+  </section>
 </div>
+
+<script>
+  (function() {
+    var details = document.querySelector('#personal details');
+    var label = document.getElementById('personal-label');
+    var closed = label.textContent;
+    details.addEventListener('toggle', function() {
+      label.textContent = details.open ? 'Hide personal essays' : closed;
+    });
+    // Links to blog.html#personal open the essays.
+    if (location.hash === '#personal') details.open = true;
+  })();
+</script>
