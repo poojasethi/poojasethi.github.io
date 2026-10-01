@@ -1,0 +1,68 @@
+---
+layout: default
+title: Photos
+summary: Photographs by Pooja Sethi.
+---
+<div class="photos-page">
+  <h1 class="page-title">Photos</h1>
+  <p class="lede">Places I've been, mostly around the Pacific Northwest.</p>
+
+  <div class="photo-grid">
+    {% for photo in site.data.photos %}
+    {% capture caption %}{{ photo.title }}{% if photo.place != "" %} · {{ photo.place }}{% endif %}{% if photo.year %}, {{ photo.year }}{% endif %}{% endcapture %}
+    <figure>
+      <a href="{{ site.baseurl }}/img/photos/{{ photo.file }}.webp" data-caption="{{ caption | strip | escape }}">
+        <img src="{{ site.baseurl }}/img/photos/{{ photo.file }}-thumb.webp" alt="{{ caption | strip | escape }}" width="{{ photo.width }}" height="{{ photo.height }}" loading="lazy">
+      </a>
+      <figcaption>{{ caption | strip }}</figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+  <p class="license">All photos &copy; Pooja Sethi, licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>. You're welcome to use them for non-commercial purposes with credit: &ldquo;Photo by Pooja Sethi (poojasethi.github.io)&rdquo;.</p>
+</div>
+
+<dialog id="lightbox" aria-label="Photo viewer">
+  <figure>
+    <img id="lightbox-img" alt="">
+    <figcaption><span id="lightbox-caption"></span> <span class="credit">&copy; Pooja Sethi · CC BY-NC 4.0</span></figcaption>
+  </figure>
+  <button type="button" class="lb-btn lb-prev" aria-label="Previous photo">←</button>
+  <button type="button" class="lb-btn lb-next" aria-label="Next photo">→</button>
+  <button type="button" class="lb-btn lb-close" aria-label="Close" autofocus>×</button>
+</dialog>
+
+<script>
+  (function() {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.photo-grid a'));
+    var box = document.getElementById('lightbox');
+    var img = document.getElementById('lightbox-img');
+    var caption = document.getElementById('lightbox-caption');
+    var current = 0;
+    if (!box.showModal) return; // Without <dialog> support, links open the full image.
+
+    function show(i) {
+      current = (i + links.length) % links.length;
+      img.src = links[current].href;
+      img.alt = links[current].dataset.caption;
+      caption.textContent = links[current].dataset.caption;
+    }
+
+    links.forEach(function(link, i) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        show(i);
+        box.showModal();
+      });
+    });
+
+    box.querySelector('.lb-prev').addEventListener('click', function() { show(current - 1); });
+    box.querySelector('.lb-next').addEventListener('click', function() { show(current + 1); });
+    box.querySelector('.lb-close').addEventListener('click', function() { box.close(); });
+    // Clicking the dark backdrop closes the viewer.
+    box.addEventListener('click', function(e) { if (e.target === box) box.close(); });
+    box.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft') show(current - 1);
+      if (e.key === 'ArrowRight') show(current + 1);
+    });
+  })();
+</script>

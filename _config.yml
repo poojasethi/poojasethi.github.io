@@ -33,3 +33,6 @@ scholar: "gUfLQYQAAAAJ"
 
 # Build settings
 markdown: kramdown
+
+# Not part of the published site
+exclude: [scripts]

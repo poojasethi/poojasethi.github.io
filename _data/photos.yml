@@ -1,0 +1,74 @@
+# Photos for /photos.html, shown in this order.
+# Add new photos with: python3 scripts/add_photo.py path/to/photo.jpg
+# Each file lives in img/photos/ as <file>.webp and <file>-thumb.webp.
+# width/height are the thumbnail's size, printed by the script.
+
+- file: seattle-sunrise-2024
+  title: "Seattle sunrise"
+  place: "Seattle"
+  year: 2024
+  width: 900
+  height: 600
+
+- file: lake-sunset-2024
+  title: "Lake sunset"
+  place: ""
+  year: 2024
+  width: 900
+  height: 600
+
+- file: ballard-locks-2024
+  title: "Sunset at the Ballard Locks"
+  place: "Seattle"
+  year: 2024
+  width: 900
+  height: 600
+
+- file: discovery-park-2024
+  title: "Sunset at Discovery Park"
+  place: "Seattle"
+  year: 2024
+  width: 900
+  height: 600
+
+- file: golden-temple-2018
+  title: "Golden Temple"
+  place: "Amritsar, India"
+  year: 2018
+  width: 611
+  height: 459
+
+- file: rainier-paradise-2017
+  title: "Paradise"
+  place: "Mt. Rainier"
+  year: 2017
+  width: 900
+  height: 507
+
+- file: sequim-lavender-2017
+  title: "Lavender festival"
+  place: "Sequim, Washington"
+  year: 2017
+  width: 900
+  height: 507
+
+- file: golden-gardens-2017
+  title: "Golden Gardens beach"
+  place: "Seattle"
+  year: 2017
+  width: 900
+  height: 507
+
+- file: green-lake-2017
+  title: "Green Lake in the summer"
+  place: "Seattle"
+  year: 2017
+  width: 900
+  height: 507
+
+- file: gas-works-2017
+  title: "Gas Works Park"
+  place: "Seattle"
+  year: 2017
+  width: 900
+  height: 507
