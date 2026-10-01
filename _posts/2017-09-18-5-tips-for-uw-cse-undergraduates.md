@@ -3,6 +3,7 @@ layout: post
 title:  "5 Tips for UW CSE Undergraduates"
 date:   2017-09-18
 categories: personal
+summary: "Five things I wish someone had told me when I started at UW CSE."
 ---
 > A repost of my [original Medium article](https://medium.com/@pjasethi/5-tips-for-uw-cse-undergraduates-b987be0f7db7).
 

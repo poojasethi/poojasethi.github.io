@@ -3,6 +3,7 @@ layout: post
 title:  "2017 in Small Moments"
 date:   2017-12-30
 categories: personal
+summary: "The ups and downs of 2017, reflected in the small moments."
 ---
 
 The ups and downs of 2017, reflected in the small moments.

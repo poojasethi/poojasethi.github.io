@@ -1,0 +1,13 @@
+{% comment %}Lists posts in one category. Usage: {% include post-list.html category="technical" limit=3 %}{% endcomment %}
+{% assign list_posts = site.posts | where_exp: "post", "post.categories contains include.category" %}
+<ul class="posts">
+  {% for post in list_posts limit: include.limit %}
+  <li>
+    <div>
+      <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+      {% if post.summary %}<p class="sum">{{ post.summary }}</p>{% endif %}
+    </div>
+    <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%b %Y' }}</time>
+  </li>
+  {% endfor %}
+</ul>

@@ -3,6 +3,7 @@ layout: post
 title:  "Hello World"
 date:   2016-07-06 
 categories: personal
+summary: "Why I started this blog."
 ---
 
 {% highlight python %}

@@ -3,6 +3,7 @@ layout: post
 title:  "2019: An optimization problem"
 date:   2019-12-31
 categories: personal
+summary: "My 2019 reflection, framed as an optimization problem."
 ---
 
 My 2019 reflection is avalable on Medium [here](https://medium.com/@pjasethi/2019-an-optimization-problem-5f1625843870).

@@ -3,6 +3,7 @@ layout: post
 title:  "2018 in Lemons"
 date:   2018-12-31
 categories: personal
+summary: "What I was thankful for, including my first trip back to India in nearly 15 years."
 ---
 # When Life Gives You Lemons...
 This year, I'm especially thankful for:
