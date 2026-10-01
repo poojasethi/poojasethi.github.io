@@ -1,6 +1,6 @@
 /**
  * Layout: one reading column with the name and nav in a top bar.
- * Geist for the site, Newsreader for post text, Geist Mono for metadata.
+ * Geist for the site, Literata for post text, Geist Mono for metadata.
  */
 :root {
     --bg:     #fbfbfa;
@@ -11,7 +11,7 @@
     --code-bg: #2a2b2e;
 
     --sans:  "Geist", system-ui, -apple-system, sans-serif;
-    --serif: "Newsreader", Georgia, serif;
+    --serif: "Literata", Georgia, serif;
     --mono:  "Geist Mono", ui-monospace, Menlo, monospace;
 }
 
@@ -41,6 +41,9 @@
  * Base
  */
 * { box-sizing: border-box; }
+
+/* Stop iOS Safari from enlarging text in landscape. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
 body {
     margin: 0;
@@ -203,7 +206,7 @@ details[open] > summary { margin-bottom: 8px; }
 
 .post {
     margin-top: 32px;
-    font: 18px/1.7 var(--serif);
+    font: 17px/1.7 var(--serif);
 }
 .post h1, .post h2, .post h3 {
     font-family: var(--sans);
