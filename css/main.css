@@ -130,15 +130,20 @@ nav.main a:hover { color: var(--hover); text-decoration: none; }
  */
 .intro {
     display: grid;
-    grid-template-columns: 1fr 112px;
-    gap: 28px;
-    align-items: start;
+    grid-template-columns: 1fr 144px;
+    column-gap: 28px;
 }
-.intro > div { min-width: 0; }
+/* Flatten the text so the photo can line up with the first paragraph */
+.intro > div:first-child { display: contents; }
+.intro > div:first-child > * { grid-column: 1; min-width: 0; }
 .avatar {
     position: relative;
-    width: 112px;
-    height: 112px;
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+    margin: -72px 0; /* keep the photo from stretching the paragraph's row */
+    width: 144px;
+    height: 144px;
     -webkit-tap-highlight-color: transparent;
 }
 .avatar img {
@@ -284,8 +289,8 @@ footer {
 @media (max-width: 520px) {
     h1 { font-size: 40px; }
     header.top { margin-bottom: 36px; }
-    .intro { grid-template-columns: 1fr; gap: 16px; }
-    .avatar { order: -1; width: 88px; height: 88px; }
+    .intro { grid-template-columns: 1fr; }
+    .avatar { grid-column: 1; grid-row: 1; margin: 0 0 16px; width: 104px; height: 104px; }
     .work li { grid-template-columns: 1fr; gap: 2px; }
     .posts li { flex-direction: column; gap: 0; }
     .post-header h1 { font-size: 32px; }
