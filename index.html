@@ -16,7 +16,15 @@ layout: default
       <a href="https://www.instagram.com/{{ site.instagram }}" aria-label="Instagram" title="Instagram">{% include icons/instagram.svg %}</a>
     </div>
   </div>
-  <img src="{{ site.baseurl }}/img/me_again.jpg" width="112" height="112" alt="Pooja Sethi outdoors beside a river">
+  <div class="avatar">
+    <img src="{{ site.baseurl }}/img/me_again.jpg" width="112" height="112" alt="Pooja Sethi outdoors beside a river">
+    <img class="pixel" src="{{ site.baseurl }}/img/me_pixel_art.jpg" width="112" height="112" alt="" aria-hidden="true">
+  </div>
+  <script>
+    document.querySelector('.avatar').addEventListener('click', function () {
+      this.classList.toggle('pixelated');
+    });
+  </script>
 </div>
 
 <section id="research" aria-labelledby="research-h">

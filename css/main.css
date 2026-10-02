@@ -135,12 +135,31 @@ nav.main a:hover { color: var(--hover); text-decoration: none; }
     align-items: start;
 }
 .intro > div { min-width: 0; }
-.intro img {
+.avatar {
+    position: relative;
     width: 112px;
     height: 112px;
+    -webkit-tap-highlight-color: transparent;
+}
+.avatar img {
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     object-fit: cover;
     object-position: 50% 28%;
+}
+.avatar .pixel {
+    position: absolute;
+    inset: 0;
+    object-position: 50% 40%;
+    opacity: 0;
+    transition: opacity 0.4s steps(4);
+}
+@media (hover: hover) {
+    .avatar:hover .pixel { opacity: 1; }
+}
+@media (hover: none) {
+    .avatar.pixelated .pixel { opacity: 1; }
 }
 
 .links { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 20px; }
@@ -266,7 +285,7 @@ footer {
     h1 { font-size: 40px; }
     header.top { margin-bottom: 36px; }
     .intro { grid-template-columns: 1fr; gap: 16px; }
-    .intro img { order: -1; width: 88px; height: 88px; }
+    .avatar { order: -1; width: 88px; height: 88px; }
     .work li { grid-template-columns: 1fr; gap: 2px; }
     .posts li { flex-direction: column; gap: 0; }
     .post-header h1 { font-size: 32px; }
